@@ -34,6 +34,7 @@
             // 
             // richTextBox
             // 
+            this.richTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox.Location = new System.Drawing.Point(12, 12);
             this.richTextBox.Name = "richTextBox";
             this.richTextBox.Size = new System.Drawing.Size(776, 397);
@@ -48,7 +49,7 @@
             this.btnHuffman.TabIndex = 1;
             this.btnHuffman.Text = "Calculate Huffman";
             this.btnHuffman.UseVisualStyleBackColor = true;
-            this.btnHuffman.Click += new System.EventHandler(this.button1_Click);
+            this.btnHuffman.Click += new System.EventHandler(this.btnHuffman_Click);
             // 
             // InputForm
             // 

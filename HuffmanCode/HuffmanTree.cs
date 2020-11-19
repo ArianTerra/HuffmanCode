@@ -48,7 +48,7 @@ namespace HuffmanCode
             }
         }
 
-        public BitArray Encode(string source)
+        public BitArray EncodeBits(string source)
         {
             var encodedSource = new List<bool>();
 
@@ -57,10 +57,19 @@ namespace HuffmanCode
                 var encodedSymbol = Root.Traverse(source[i], new List<bool>());
                 encodedSource.AddRange(encodedSymbol);
             }
-
             var bits = new BitArray(encodedSource.ToArray());
-
             return bits;
+        }
+        public string EncodeString(string source)
+        {
+            BitArray bits = EncodeBits(source);
+            string s = "";
+            for (var i = 0; i < source.Length; i++)
+            {
+                if (bits[i]) s += "1";
+                else s += "0";
+            }
+            return s;
         }
 
         public string Decode(BitArray bits)
