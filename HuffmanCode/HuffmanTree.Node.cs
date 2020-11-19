@@ -6,12 +6,12 @@ namespace HuffmanCode
     {
         public class Node
         {
-            public char Symbol { get; set; }
+            public string Symbol { get; set; }
             public int Frequency { get; set; }
             public Node Right { get; set; }
             public Node Left { get; set; }
 
-            public List<bool> Traverse(char symbol, List<bool> data)
+            public List<bool> Traverse(string symbol, List<bool> data)
             {
                 // Leaf
                 if (Right == null && Left == null)

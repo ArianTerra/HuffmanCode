@@ -6,7 +6,7 @@ namespace HuffmanCode
 {
     internal partial class HuffmanTree
     {
-        public Dictionary<char, int> Frequencies = new Dictionary<char, int>();
+        public Dictionary<string, int> Frequencies = new Dictionary<string, int>();
         private readonly List<Node> nodes = new List<Node>();
         public Node Root { get; set; }
 
@@ -14,9 +14,9 @@ namespace HuffmanCode
         {
             for (var i = 0; i < source.Length; i++)
             {
-                if (!Frequencies.ContainsKey(source[i])) Frequencies.Add(source[i], 0);
+                if (!Frequencies.ContainsKey(source[i].ToString())) Frequencies.Add(source[i].ToString(), 0);
 
-                Frequencies[source[i]]++;
+                Frequencies[source[i].ToString()]++;
             }
 
             foreach (var symbol in Frequencies) nodes.Add(new Node {Symbol = symbol.Key, Frequency = symbol.Value});
@@ -33,7 +33,7 @@ namespace HuffmanCode
                     // Create a parent node by combining the frequencies
                     var parent = new Node
                     {
-                        Symbol = '*',
+                        Symbol = "*",
                         Frequency = taken[0].Frequency + taken[1].Frequency,
                         Left = taken[0],
                         Right = taken[1]
@@ -54,7 +54,7 @@ namespace HuffmanCode
 
             for (var i = 0; i < source.Length; i++)
             {
-                var encodedSymbol = Root.Traverse(source[i], new List<bool>());
+                var encodedSymbol = Root.Traverse(source[i].ToString(), new List<bool>());
                 encodedSource.AddRange(encodedSymbol);
             }
             var bits = new BitArray(encodedSource.ToArray());

@@ -16,6 +16,7 @@ namespace HuffmanCode
             HuffmanTree tree = new HuffmanTree();
             tree.Build(text);
             var one = tree.EncodeString(text); //TODO
+            MessageBox.Show(one);
         }
     }
 }
