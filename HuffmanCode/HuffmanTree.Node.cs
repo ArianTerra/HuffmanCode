@@ -11,7 +11,7 @@ namespace HuffmanCode
             public Node Right { get; set; }
             public Node Left { get; set; }
 
-            public List<bool> Traverse(string symbol, List<bool> data)
+            public List<string> Traverse(string symbol, List<string> data)
             {
                 // Leaf
                 if (Right == null && Left == null)
@@ -21,23 +21,23 @@ namespace HuffmanCode
                     return null;
                 }
 
-                List<bool> left = null;
-                List<bool> right = null;
+                List<string> left = null;
+                List<string> right = null;
 
                 if (Left != null)
                 {
-                    var leftPath = new List<bool>();
+                    var leftPath = new List<string>();
                     leftPath.AddRange(data);
-                    leftPath.Add(false);
+                    leftPath.Add("0");
 
                     left = Left.Traverse(symbol, leftPath);
                 }
 
                 if (Right != null)
                 {
-                    var rightPath = new List<bool>();
+                    var rightPath = new List<string>();
                     rightPath.AddRange(data);
-                    rightPath.Add(true);
+                    rightPath.Add("1");
                     right = Right.Traverse(symbol, rightPath);
                 }
 
