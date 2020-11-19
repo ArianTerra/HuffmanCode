@@ -28,13 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.btnHuffman = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // richTextBox
+            // 
+            this.richTextBox.Location = new System.Drawing.Point(12, 12);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.Size = new System.Drawing.Size(776, 397);
+            this.richTextBox.TabIndex = 0;
+            this.richTextBox.Text = "";
+            // 
+            // btnHuffman
+            // 
+            this.btnHuffman.Location = new System.Drawing.Point(675, 415);
+            this.btnHuffman.Name = "btnHuffman";
+            this.btnHuffman.Size = new System.Drawing.Size(113, 23);
+            this.btnHuffman.TabIndex = 1;
+            this.btnHuffman.Text = "Calculate Huffman";
+            this.btnHuffman.UseVisualStyleBackColor = true;
+            this.btnHuffman.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // InputForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Controls.Add(this.btnHuffman);
+            this.Controls.Add(this.richTextBox);
+            this.Name = "InputForm";
+            this.Text = "Input";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.RichTextBox richTextBox;
+        private System.Windows.Forms.Button btnHuffman;
     }
 }
 
