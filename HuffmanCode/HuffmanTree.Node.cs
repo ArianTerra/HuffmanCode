@@ -2,7 +2,7 @@
 
 namespace HuffmanCode
 {
-    internal partial class HuffmanTree
+    public partial class HuffmanTree
     {
         public class Node
         {

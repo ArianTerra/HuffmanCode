@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace HuffmanCode
 {
-    internal partial class HuffmanTree
+    public partial class HuffmanTree
     {
         // Basic data.
         public Dictionary<string, int> Frequencies = new Dictionary<string, int>();
@@ -25,7 +25,7 @@ namespace HuffmanCode
         // HERE            //
         //----------------//
 
-        public Dictionary<string, Tuple<string, string, int>> Result = new Dictionary<string, Tuple<string, string, int>>();
+        public Dictionary<string, Tuple<string, string, double>> Result = new Dictionary<string, Tuple<string, string, double>>();
         // aggregated symbol - code name - code - frequancy;
 
 
@@ -34,7 +34,7 @@ namespace HuffmanCode
         //----------------------------------------------//
 
         // nouse = false is error-prone.
-        public void Build(string source, int aggregated, bool nouse = true)
+        public void Build(string source, int aggregated, bool nouse = false)
         {
             AggreagtionLen = aggregated;
 
@@ -94,7 +94,7 @@ namespace HuffmanCode
             int cn = 0;
             foreach (var item in Frequencies)
             {
-                CodeNames.Add(item.Key, $"a{cn++}");
+                CodeNames.Add(item.Key, $"{Convert.ToChar('a' + AggreagtionLen - 1)}{cn++}");
             }
 
             foreach (var symbol in Frequencies) nodes.Add(new Node {Symbol = symbol.Key, Frequency = symbol.Value});
@@ -127,7 +127,8 @@ namespace HuffmanCode
 
             foreach (var item in Frequencies)
             {
-                Result.Add(item.Key, Tuple.Create(CodeNames[item.Key], EncodeBits(item.Key), item.Value));
+                Result.Add(item.Key, Tuple.Create(CodeNames[item.Key], EncodeBits(item.Key),
+                    Convert.ToDouble(item.Value) / Convert.ToDouble(source.Length)));
             }
         }
 
@@ -153,6 +154,9 @@ namespace HuffmanCode
         // DO NOT DECODE WHEN aggregated IN Build() IS > 1
         public string Decode(string bits)
         {
+            if (AggreagtionLen > 2)
+                return "";
+
             var current = Root;
             var decoded = "";
 
