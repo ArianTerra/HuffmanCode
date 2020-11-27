@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EncodedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EncodedForm.Designer.cs">
+      <DependentUpon>EncodedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HuffmanTree.cs" />
     <Compile Include="HuffmanTree.Node.cs" />
     <Compile Include="InputForm.cs">
@@ -62,6 +68,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EncodedForm.resx">
+      <DependentUpon>EncodedForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InputForm.resx">
       <DependentUpon>InputForm.cs</DependentUpon>
     </EmbeddedResource>

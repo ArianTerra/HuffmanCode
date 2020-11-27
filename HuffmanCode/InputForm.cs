@@ -28,7 +28,9 @@ namespace HuffmanCode
             string one = Huffman.EncodeString(text);
 
             OutputForm form = new OutputForm(Huffmen);
-            form.ShowDialog();
+            form.Show();
+            EncodedForm encoding = new EncodedForm(text);
+            encoding.Show();
         }
     }
 }

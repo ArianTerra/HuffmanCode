@@ -97,7 +97,6 @@
             this.Grid5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid5.Location = new System.Drawing.Point(16, 707);
             this.Grid5.Name = "Grid5";
-            this.Grid5.ReadOnly = true;
             this.Grid5.Size = new System.Drawing.Size(573, 150);
             this.Grid5.TabIndex = 4;
             // 
