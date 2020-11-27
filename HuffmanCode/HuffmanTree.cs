@@ -13,6 +13,7 @@ namespace HuffmanCode
         public Dictionary<string, int> Frequencies = new Dictionary<string, int>();
         public Dictionary<string, string> CodeNames = null;
         public int AggreagtionLen = 0;
+        public int SourseLen = 0;
 
 
         // Represents tree, is in use by the algorithm.
@@ -36,6 +37,7 @@ namespace HuffmanCode
         // nouse = false is error-prone.
         public void Build(string source, int aggregated, bool nouse = false)
         {
+            SourseLen = source.Length;
             AggreagtionLen = aggregated;
 
             HashSet<string> Alphabet = new HashSet<string>();
@@ -67,7 +69,6 @@ namespace HuffmanCode
                 AggregatingSymbols.RemoveRange(0, ing);
             }
 
-            // Searching becomes harder (AggregatingSymbols in use).
             for (var i = 0; i < AggregatingSymbols.Count; i++)
             {
                 Frequencies.Add(AggregatingSymbols[i], Regex.Matches(source, AggregatingSymbols[i]).Count);
@@ -149,36 +150,6 @@ namespace HuffmanCode
         public string EncodeString(string source)
         {
             return EncodeBits(source);
-        }
-
-        // DO NOT DECODE WHEN aggregated IN Build() IS > 1
-        public string Decode(string bits)
-        {
-            if (AggreagtionLen > 2)
-                return "";
-
-            var current = Root;
-            var decoded = "";
-
-            foreach (char bit in bits)
-            {
-                if (bit == '1')
-                {
-                    if (current.Right != null) current = current.Right;
-                }
-                else
-                {
-                    if (current.Left != null) current = current.Left;
-                }
-
-                if (IsLeaf(current))
-                {
-                    decoded += current.Symbol;
-                    current = Root;
-                }
-            }
-
-            return decoded;
         }
 
         public bool IsLeaf(Node node)

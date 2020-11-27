@@ -66,13 +66,25 @@ namespace HuffmanCode
 
             var limit = Huffmen.Length;
 
-            for (int i = 0; i < limit; i++)
+            for (int i = 0; i < Grid.ColumnCount; i++)
+            {
+                Grid.Columns[i].Width = 63;
+            }
+
+            for (int i = 0; i <= limit; i++)
             {
                 Grid.Rows.Add();
-
-
-
             }
+
+            Grid[0, 0].Value = "p(x_k)";
+            Grid[1, 0].Value = "H(S)";
+            Grid[2, 0].Value = "H_1(S)";
+            Grid[3, 0].Value = "n_minc";
+            Grid[4, 0].Value = "D_и";
+            Grid[5, 0].Value = "avg_n";
+            Grid[6, 0].Value = "avg_n_c";
+            Grid[7, 0].Value = "n_minc/n_c";
+            Grid[8, 0].Value = "D_к";
         }
 
         private void btnHuffman_Click(object sender, EventArgs e)
